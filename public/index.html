@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteWise - Election Education Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation / Accessibility Bar -->
+    <header class="top-nav">
+        <div class="logo">
+            <i class="fa-solid fa-check-to-slot"></i> VoteWise
+        </div>
+        <div class="controls">
+            <button id="langToggle" title="Toggle Language" aria-label="Toggle Language" data-lang="en">
+                <i class="fa-solid fa-language"></i> <span id="langLabel">English</span>
+            </button>
+            <button id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="textSizeToggle" title="Toggle Text Size" aria-label="Toggle Text Size">
+                <i class="fa-solid fa-text-height"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 id="heroTitle">Understand Your Vote. Shape Your Future.</h1>
+        <p id="heroSubtitle">Your smart guide to elections, voting rights, and civic duties.</p>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        
+        <!-- Topic Cards Section -->
+        <section class="topic-cards" id="topicsContainer">
+            <div class="card" data-topic="How to Vote">
+                <i class="fa-solid fa-person-booth"></i>
+                <h3 class="translatable">How to Vote</h3>
+            </div>
+            <div class="card" data-topic="Voter Registration">
+                <i class="fa-solid fa-id-card"></i>
+                <h3 class="translatable">Voter Registration</h3>
+            </div>
+            <div class="card" data-topic="Understanding Ballot">
+                <i class="fa-solid fa-box-archive"></i>
+                <h3 class="translatable">Understanding Ballot</h3>
+            </div>
+            <div class="card" data-topic="Election Officials">
+                <i class="fa-solid fa-users"></i>
+                <h3 class="translatable">Election Officials</h3>
+            </div>
+            <div class="card" data-topic="Your Rights as a Voter">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3 class="translatable">Your Rights as a Voter</h3>
+            </div>
+            <div class="card" data-topic="Result Declaration Process">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h3 class="translatable">Result Declaration Process</h3>
+            </div>
+        </section>
+
+        <!-- Election Timeline Section -->
+        <section class="timeline-section">
+            <h2 class="section-title translatable">Election Phases</h2>
+            <div class="timeline-container" id="timelineContainer">
+                <!-- Timeline items injected by JS -->
+            </div>
+        </section>
+
+        <!-- Main Chat Assistant Section -->
+        <section class="chat-section">
+            <div class="chat-header">
+                <h2><i class="fa-solid fa-robot"></i> VoteWise Assistant</h2>
+                <button id="startQuizBtn" class="primary-btn translatable">Take a Quiz</button>
+            </div>
+            <div class="chat-window" id="chatWindow">
+                <div class="message assistant">
+                    <div class="msg-bubble">
+                        <p class="translatable">Hello! I am VoteWise. Ask me anything about the election process, voting, or your civic duties.</p>
+                        <button class="tts-btn" aria-label="Read Aloud"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type your question here..." aria-label="Ask a question">
+                <button id="sendBtn" aria-label="Send Message"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="quizContainer">
+                <h2 class="translatable">VoteWise Knowledge Check</h2>
+                <div id="quizLoading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p class="translatable">Generating Quiz...</p>
+                </div>
+                <div id="quizContent" style="display: none;">
+                    <!-- Quiz injected here -->
+                </div>
+                <div id="quizResults" style="display: none;">
+                    <!-- Results injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topic Detail Modal -->
+    <div id="topicModal" class="modal">
+        <div class="modal-content">
+            <span class="close-topic-modal">&times;</span>
+            <h2 id="topicTitle"></h2>
+            <div id="topicLoading">
+                <div class="spinner"></div>
+                <p class="translatable">Loading explanation...</p>
+            </div>
+            <div id="topicContent"></div>
+            <button class="tts-btn topic-tts" id="topicTtsBtn" aria-label="Read Aloud" style="display:none;"><i class="fa-solid fa-volume-high"></i> Read Aloud</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+    <script src="timeline.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>
